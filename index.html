@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colegio Los Robles</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --warm-cream: #FDF6EE;
+    --warm-orange: #E8825A;
+    --warm-orange-dark: #C45E38;
+    --warm-green: #4A7C59;
+    --warm-green-light: #EAF2EC;
+    --warm-yellow: #F5C842;
+    --dark-text: #2C2416;
+    --mid-text: #6B5B45;
+    --light-border: #EAD9C4;
+    --card-bg: #FFFAF4;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-cream); color: var(--dark-text); font-size: 15px; line-height: 1.6; }
+
+  /* NAV */
+  nav { background: #fff; border-bottom: 1px solid var(--light-border); position: sticky; top: 0; z-index: 100; }
+  .nav-inner { max-width: 1100px; margin: auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; color: var(--warm-orange-dark); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .nav-logo span { font-size: 26px; }
+  .nav-links { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .nav-links a { text-decoration: none; color: var(--mid-text); font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 20px; transition: background 0.2s, color 0.2s; }
+  .nav-links a:hover { background: var(--warm-green-light); color: var(--warm-green); }
+  .nav-btn { background: var(--warm-orange); color: #fff !important; border-radius: 20px !important; padding: 7px 16px !important; font-weight: 600 !important; }
+  .nav-btn:hover { background: var(--warm-orange-dark) !important; color: #fff !important; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #FDF0E3 0%, #FDE8D4 50%, #F9DCC4 100%); padding: 80px 2rem 70px; text-align: center; }
+  .hero-tag { display: inline-block; background: var(--warm-green-light); color: var(--warm-green); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 700; color: var(--dark-text); line-height: 1.15; margin-bottom: 18px; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .hero h1 em { color: var(--warm-orange); font-style: normal; }
+  .hero p { font-size: 17px; color: var(--mid-text); max-width: 520px; margin: 0 auto 32px; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--warm-orange); color: #fff; text-decoration: none; padding: 13px 28px; border-radius: 30px; font-weight: 600; font-size: 15px; transition: background 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--warm-orange-dark); }
+  .btn-secondary { background: #fff; color: var(--warm-green); border: 1.5px solid var(--warm-green); text-decoration: none; padding: 12px 28px; border-radius: 30px; font-weight: 600; font-size: 15px; transition: background 0.2s; display: inline-block; }
+  .btn-secondary:hover { background: var(--warm-green-light); }
+  .hero-stats { display: flex; gap: 32px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 700; color: var(--warm-orange-dark); }
+  .stat-label { font-size: 12px; color: var(--mid-text); font-weight: 500; }
+
+  /* SECTION COMMON */
+  section { padding: 64px 2rem; }
+  .section-inner { max-width: 1100px; margin: auto; }
+  .section-tag { display: inline-block; background: var(--warm-green-light); color: var(--warm-green); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+  .section-title { font-family: 'Fraunces', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 600; color: var(--dark-text); margin-bottom: 10px; }
+  .section-sub { color: var(--mid-text); font-size: 15px; max-width: 540px; margin-bottom: 40px; }
+
+  /* SOBRE */
+  #sobre { background: #fff; }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  @media(max-width: 700px){ .sobre-grid { grid-template-columns: 1fr; } }
+  .sobre-img { background: linear-gradient(135deg, #F5C84230, #E8825A20); border-radius: 20px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 80px; border: 2px solid var(--light-border); }
+  .valores { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+  .valor { background: var(--warm-cream); border-radius: 12px; padding: 14px 16px; border-left: 3px solid var(--warm-orange); }
+  .valor-title { font-weight: 600; font-size: 13.5px; color: var(--dark-text); margin-bottom: 3px; }
+  .valor-text { font-size: 12.5px; color: var(--mid-text); }
+
+  /* NOTICIAS */
+  #noticias { background: var(--warm-cream); }
+  .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .news-card { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--light-border); overflow: hidden; }
+  .news-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 50px; }
+  .news-img.green { background: linear-gradient(135deg, #EAF2EC, #C5DFC9); }
+  .news-img.yellow { background: linear-gradient(135deg, #FEF9E6, #F5E8A0); }
+  .news-img.orange { background: linear-gradient(135deg, #FEF0EA, #F5C9B3); }
+  .news-body { padding: 16px 18px 18px; }
+  .news-tag-label { font-size: 11px; font-weight: 600; color: var(--warm-orange); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .news-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 600; color: var(--dark-text); margin-bottom: 6px; line-height: 1.3; }
+  .news-date { font-size: 12px; color: var(--mid-text); }
+
+  /* ADMISIONES */
+  #admisiones { background: linear-gradient(135deg, #2C5F3F, #1E4230); color: #fff; }
+  #admisiones .section-tag { background: rgba(255,255,255,0.15); color: #C5DFC9; }
+  #admisiones .section-title { color: #fff; }
+  #admisiones .section-sub { color: rgba(255,255,255,0.75); }
+  .adm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 36px; }
+  .adm-step { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 20px; }
+  .adm-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: var(--warm-yellow); margin-bottom: 6px; }
+  .adm-label { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .adm-desc { font-size: 13px; color: rgba(255,255,255,0.65); }
+  .adm-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-white { background: #fff; color: var(--warm-green); text-decoration: none; padding: 13px 28px; border-radius: 30px; font-weight: 600; font-size: 15px; display: inline-block; }
+  .btn-outline-white { border: 1.5px solid rgba(255,255,255,0.5); color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 30px; font-weight: 600; font-size: 15px; display: inline-block; }
+
+  /* GALERÍA */
+  #galeria { background: #fff; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 160px); gap: 12px; }
+  @media(max-width: 600px){ .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  .gallery-item { border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+  .gallery-item.big { grid-row: span 2; font-size: 70px; }
+  .g1 { background: linear-gradient(135deg, #EAF2EC, #A8D5B5); }
+  .g2 { background: linear-gradient(135deg, #FEF0EA, #F5BFA0); }
+  .g3 { background: linear-gradient(135deg, #FEF9E6, #F5E090); }
+  .g4 { background: linear-gradient(135deg, #E6F1FB, #A8C8EE); }
+  .g5 { background: linear-gradient(135deg, #F5EDF8, #D9B8E8); }
+  .g6 { background: linear-gradient(135deg, #FFEEEE, #F5B8B8); }
+
+  /* CONTACTO */
+  #contacto { background: var(--warm-cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media(max-width: 700px){ .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+  .contact-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--warm-orange); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .contact-item-title { font-weight: 600; font-size: 14px; color: var(--dark-text); margin-bottom: 2px; }
+  .contact-item-text { font-size: 13.5px; color: var(--mid-text); }
+  .contact-form { background: #fff; border-radius: 18px; padding: 28px; border: 1px solid var(--light-border); }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--mid-text); margin-bottom: 5px; }
+  .form-group input, .form-group textarea { width: 100%; padding: 10px 14px; border: 1.5px solid var(--light-border); border-radius: 10px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--dark-text); background: var(--warm-cream); outline: none; }
+  .form-group textarea { min-height: 90px; resize: vertical; }
+  .btn-form { width: 100%; background: var(--warm-orange); color: #fff; border: none; padding: 13px; border-radius: 30px; font-weight: 600; font-size: 15px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-form:hover { background: var(--warm-orange-dark); }
+
+  /* SYSCOLEGIOS */
+  .syscolegios { background: #fff; border-top: 1px solid var(--light-border); padding: 20px 2rem; }
+  .syscolegios-inner { max-width: 1100px; margin: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .syscolegios-text { font-size: 14px; color: var(--mid-text); }
+  .syscolegios-text strong { color: var(--dark-text); }
+  .btn-sys { background: var(--warm-green); color: #fff; text-decoration: none; padding: 10px 22px; border-radius: 24px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 7px; }
+  .btn-sys:hover { background: #3A6447; }
+
+  footer { background: var(--dark-text); color: rgba(255,255,255,0.7); text-align: center; padding: 28px 2rem; font-size: 13px; }
+  footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#inicio"><span>🌳</span> Colegio Los Robles</a>
+    <div class="nav-links">
+      <a href="#sobre">Nosotros</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#galeria">Galería</a>
+      <a href="#admisiones">Admisiones</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://www.syscolegios.com/" target="_blank" class="nav-btn">Portal Familias →</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="hero-tag">Primaria · Secundaria · Desde 1982</div>
+  <h1>Un lugar donde <em>cada niño</em><br>florece a su manera</h1>
+  <p>Educación de calidad en un ambiente cálido, seguro y lleno de posibilidades para tus hijos.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="#admisiones">Proceso de admisión</a>
+    <a class="btn-secondary" href="#sobre">Conoce el colegio</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">+800</div><div class="stat-label">Estudiantes</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Años de historia</div></div>
+    <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Satisfacción familiar</div></div>
+    <div class="stat"><div class="stat-num">K–11</div><div class="stat-label">Niveles</div></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div>
+        <div class="section-tag">Sobre el colegio</div>
+        <h2 class="section-title">Formamos personas íntegras con alma y carácter</h2>
+        <p style="color: var(--mid-text); margin-bottom: 20px;">Desde hace más de cuatro décadas, el Colegio Los Robles acompaña el desarrollo de niños y jóvenes con un enfoque humano, académico y comunitario.</p>
+        <div class="valores">
+          <div class="valor"><div class="valor-title">🌱 Crecimiento</div><div class="valor-text">Cada estudiante aprende a su ritmo</div></div>
+          <div class="valor"><div class="valor-title">🤝 Comunidad</div><div class="valor-text">Familias activas y comprometidas</div></div>
+          <div class="valor"><div class="valor-title">📚 Excelencia</div><div class="valor-text">Rigor académico con calidez humana</div></div>
+          <div class="valor"><div class="valor-title">🎨 Creatividad</div><div class="valor-text">Arte, deporte y cultura integrados</div></div>
+        </div>
+      </div>
+      <div class="sobre-img">🏫</div>
+    </div>
+  </div>
+</section>
+
+<section id="noticias">
+  <div class="section-inner">
+    <div class="section-tag">Noticias y eventos</div>
+    <h2 class="section-title">Lo más reciente del colegio</h2>
+    <p class="section-sub">Mantente al día con todo lo que sucede en nuestra comunidad escolar.</p>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-img green">🏆</div>
+        <div class="news-body">
+          <div class="news-tag-label">Logros</div>
+          <div class="news-title">Estudiantes destacados en olimpiadas de matemáticas regionales</div>
+          <div class="news-date">8 de abril, 2026</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img yellow">🎭</div>
+        <div class="news-body">
+          <div class="news-tag-label">Evento</div>
+          <div class="news-title">Festival cultural de fin de año: inscripción de actos abierta</div>
+          <div class="news-date">5 de abril, 2026</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img orange">📅</div>
+        <div class="news-body">
+          <div class="news-tag-label">Calendario</div>
+          <div class="news-title">Semana de entrega de informes: horarios de atención a padres</div>
+          <div class="news-date">1 de abril, 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="admisiones">
+  <div class="section-inner">
+    <div class="section-tag">Admisiones 2026</div>
+    <h2 class="section-title">Únete a nuestra familia escolar</h2>
+    <p class="section-sub">El proceso es sencillo y acompañado en cada paso. Cupos limitados disponibles.</p>
+    <div class="adm-grid">
+      <div class="adm-step"><div class="adm-num">01</div><div class="adm-label">Solicitud</div><div class="adm-desc">Completa el formulario de interés en línea o en secretaría</div></div>
+      <div class="adm-step"><div class="adm-num">02</div><div class="adm-label">Visita</div><div class="adm-desc">Agenda un recorrido por las instalaciones con tu familia</div></div>
+      <div class="adm-step"><div class="adm-num">03</div><div class="adm-label">Evaluación</div><div class="adm-desc">Jornada de conocimiento con el equipo pedagógico</div></div>
+      <div class="adm-step"><div class="adm-num">04</div><div class="adm-label">Matrícula</div><div class="adm-desc">Formalización y bienvenida a la comunidad escolar</div></div>
+    </div>
+    <div class="adm-cta">
+      <a href="#contacto" class="btn-white">Solicitar información</a>
+      <a href="#contacto" class="btn-outline-white">Agendar visita</a>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="section-inner">
+    <div class="section-tag">Galería</div>
+    <h2 class="section-title">La vida en el colegio</h2>
+    <p class="section-sub">Momentos que hacen especial a nuestra comunidad escolar.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item g1 big">🏃</div>
+      <div class="gallery-item g2">🎨</div>
+      <div class="gallery-item g3">🔬</div>
+      <div class="gallery-item g4">📖</div>
+      <div class="gallery-item g5">🎵</div>
+      <div class="gallery-item g6">🌿</div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="section-inner">
+    <div class="section-tag">Contacto</div>
+    <h2 class="section-title">Estamos para ayudarte</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p style="color: var(--mid-text); margin-bottom: 8px;">No dudes en comunicarte con nosotros para resolver tus dudas o agendar una visita.</p>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-item-title">Dirección</div><div class="contact-item-text">Calle 45 #23-10, Bogotá, Colombia</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><div class="contact-item-title">Teléfono</div><div class="contact-item-text">(601) 234-5678 · Lun–Vie 7am–4pm</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div><div class="contact-item-title">Correo</div><div class="contact-item-text">info@colegiolosrobles.edu.co</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div><div class="contact-item-title">WhatsApp</div><div class="contact-item-text">+57 310 123 4567</div></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-group"><label>Nombre completo</label><input type="text" placeholder="Tu nombre" /></div>
+        <div class="form-group"><label>Correo electrónico</label><input type="email" placeholder="tucorreo@ejemplo.com" /></div>
+        <div class="form-group"><label>Mensaje</label><textarea placeholder="¿En qué podemos ayudarte?"></textarea></div>
+        <button class="btn-form">Enviar mensaje</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="syscolegios">
+  <div class="syscolegios-inner">
+    <div class="syscolegios-text"><strong>¿Eres padre, madre o docente?</strong> Accede al portal escolar para comunicados, calificaciones y perfiles estudiantiles.</div>
+    <a href="https://www.syscolegios.com/" target="_blank" class="btn-sys">🎓 Ingresar a Syscolegios →</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Colegio Los Robles · Bogotá, Colombia · <a href="mailto:info@colegiolosrobles.edu.co">info@colegiolosrobles.edu.co</a></p>
+</footer>
+
+</body>
+</html>
